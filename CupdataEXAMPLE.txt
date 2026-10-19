@@ -1,0 +1,24 @@
+{
+  "leaderboard": [
+    {
+      "name": "Marffuni",
+      "points": 234,
+      "wins": 1,
+      "top5": 3,
+      "top10": 5,
+      "kills": 18,
+      "avgElims": 3.6,
+      "avgPlacement": 12.4
+    },
+    {
+      "name": "Freund 1",
+      "points": 180,
+      "wins": 0,
+      "top5": 1,
+      "top10": 3,
+      "kills": 12,
+      "avgElims": 2.4,
+      "avgPlacement": 21.0
+    }
+  ]
+}
