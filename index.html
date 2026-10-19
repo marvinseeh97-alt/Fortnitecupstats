@@ -172,7 +172,6 @@
       margin-bottom: 3.5rem;
     }
 
-    /* Padding-Erweiterung oben/unten, damit grüne und rote Randleuchteffekte NICHT abgeschnitten werden */
     .cups-slider {
       display: flex;
       gap: 1.5rem;
@@ -241,7 +240,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
       cursor: pointer;
     }
 
@@ -276,6 +275,16 @@
       100% { box-shadow: 0 0 35px var(--live-green); }
     }
 
+    /* ABGEDUNKELTER LOOK FÜR BEENDETE CUPS */
+    .fortnite-card.is-ended {
+      opacity: 0.65;
+      border-color: #1f1f1f;
+    }
+
+    .fortnite-card.is-ended:hover {
+      opacity: 0.95;
+    }
+
     .card-top-row {
       display: flex;
       justify-content: space-between;
@@ -294,7 +303,7 @@
       padding: 0.9rem 1.1rem 0 1.1rem;
     }
 
-    /* LIVE BADGE OBEN RECHTS AM BILD */
+    /* LIVE BADGE */
     .live-indicator-badge {
       margin-top: 0.8rem;
       background: #ff003c;
@@ -324,6 +333,22 @@
       0% { transform: scale(1); }
       50% { transform: scale(1.08); }
       100% { transform: scale(1); }
+    }
+
+    /* ENDED BADGE */
+    .ended-indicator-badge {
+      margin-top: 0.8rem;
+      background: rgba(40, 40, 40, 0.9);
+      color: #aaaaaa;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
     }
 
     .card-overlay {
@@ -932,11 +957,15 @@
 
         cupsData = data.cups || [];
 
+        // CHRONOLOGISCH SORTIEREN
         sortCupsChronologically(cupsData);
 
         findAndRenderNextCup(data.nextCup);
         renderCupsSlider(cupsData);
         renderCalendar();
+
+        // AUTOMATISCH ZUM NÄCHSTEN ANSTEHENDEN / LIVE CUP VORSCROLLEN
+        scrollToNextActiveCup();
 
       } catch (err) {
         console.error(err);
@@ -956,23 +985,22 @@
       });
     }
 
-    /* PRÜFT OB EIN CUP JETZT GERADE LIVE IST */
-    function checkIfCupIsLive(cupDateStr, timeStr) {
-      if (!cupDateStr || !timeStr) return false;
+    /* ERMITTELT DEN STATUS DES CUPS: 'LIVE', 'ENDED' ODER 'UPCOMING' */
+    function getCupStatus(cupDateStr, timeStr) {
+      if (!cupDateStr || !timeStr) return 'UPCOMING';
 
       const now = new Date();
-
-      // Datum zerlegen (YYYY-MM-DD)
       const [year, month, day] = cupDateStr.split('-').map(Number);
+      const cupDayDate = new Date(year, month - 1, day);
+      const todayDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
-      // Prüfen, ob das Datum heute entspricht
-      if (now.getFullYear() !== year || (now.getMonth() + 1) !== month || now.getDate() !== day) {
-        return false;
+      // Wenn das Datum in der Vergangenheit liegt
+      if (cupDayDate < todayDate) {
+        return 'ENDED';
       }
 
-      // Zeit-String zerlegen (z.B. "7:00 PM - 10:00 PM")
       const timeParts = timeStr.split('-');
-      if (timeParts.length < 2) return false;
+      if (timeParts.length < 2) return 'UPCOMING';
 
       const startStr = timeParts[0].trim();
       const endStr = timeParts[1].trim();
@@ -980,12 +1008,17 @@
       const startDate = parseTimeStringToDate(year, month - 1, day, startStr);
       const endDate = parseTimeStringToDate(year, month - 1, day, endStr);
 
-      if (!startDate || !endDate) return false;
+      if (!startDate || !endDate) return 'UPCOMING';
 
-      return now >= startDate && now <= endDate;
+      if (now > endDate) {
+        return 'ENDED';
+      } else if (now >= startDate && now <= endDate) {
+        return 'LIVE';
+      } else {
+        return 'UPCOMING';
+      }
     }
 
-    /* HILFSFUNKTION FÜR UHRZEIT-PARSING (z.B. 7:00 PM oder 19:00) */
     function parseTimeStringToDate(y, m, d, tStr) {
       try {
         let isPM = tStr.toUpperCase().includes('PM');
@@ -1020,17 +1053,17 @@
         return;
       }
 
-      const now = new Date();
-      let upcomingCups = cupsData.filter(c => new Date(c.date) >= new Date(now.getFullYear(), now.getMonth(), now.getDate()));
+      // Finde den ersten Cup, der nicht beendet ist
+      const activeCup = cupsData.find(c => getCupStatus(c.date, c.time) !== 'ENDED');
 
-      if (upcomingCups.length > 0) {
-        const next = upcomingCups[0];
-        nameEl.textContent = next.title;
-        timeEl.textContent = `${next.date} • ${next.time || ''}`;
+      if (activeCup) {
+        nameEl.textContent = activeCup.title;
+        timeEl.textContent = `${activeCup.date} • ${activeCup.time || ''}`;
       } else {
-        const first = cupsData[0];
-        nameEl.textContent = first.title;
-        timeEl.textContent = `${first.date} • ${first.time || ''}`;
+        // Falls alle beendet sind, zeige den letzten an
+        const last = cupsData[cupsData.length - 1];
+        nameEl.textContent = last.title;
+        timeEl.textContent = `${last.date} • ${last.time || ''}`;
       }
     }
 
@@ -1080,12 +1113,22 @@
         const imgCandidates = getPossibleImageNames(cup.title, cup.image, cup.json);
         const primaryImg = imgCandidates[0];
 
-        /* LIVE PRÜFUNG */
-        const isLive = checkIfCupIsLive(cup.date, cup.time);
+        /* STATUS-PRÜFUNG: LIVE, ENDED ODER UPCOMING */
+        const status = getCupStatus(cup.date, cup.time);
+        const isLive = status === 'LIVE';
+        const isEnded = status === 'ENDED';
 
         const card = document.createElement('div');
-        card.className = `fortnite-card ${isLive ? 'is-live' : ''}`;
+        card.className = `fortnite-card ${isLive ? 'is-live' : ''} ${isEnded ? 'is-ended' : ''}`;
         card.dataset.date = cup.date;
+        card.dataset.status = status;
+
+        let statusBadgeHTML = '';
+        if (isLive) {
+          statusBadgeHTML = `<div class="live-indicator-badge"><span class="live-dot"></span>LIVE</div>`;
+        } else if (isEnded) {
+          statusBadgeHTML = `<div class="ended-indicator-badge">ENDED</div>`;
+        }
 
         card.innerHTML = `
           <img src="${primaryImg}" class="card-bg-img" alt="${escapeHtml(cup.title)}" 
@@ -1095,7 +1138,7 @@
           <div>
             <div class="card-top-row">
               <div class="card-date-header">${headerDateStr}</div>
-              ${isLive ? `<div class="live-indicator-badge"><span class="live-dot"></span>LIVE</div>` : ''}
+              ${statusBadgeHTML}
             </div>
             <div class="card-badge"><span class="dot"></span>${escapeHtml(cup.region || 'EU')}</div>
           </div>
@@ -1116,6 +1159,20 @@
 
         slider.appendChild(card);
       });
+    }
+
+    // AUTOMATISCHES SCROLLEN ZUM ZUERT NÄCHSTEN ANSTEHENDEN ODER LIVE CUP
+    function scrollToNextActiveCup() {
+      setTimeout(() => {
+        const slider = document.getElementById('cups-slider');
+        // Suche zuerst nach einer Live-Karte, sonst nach der ersten kommenden (nicht beendeten) Karte
+        const activeCard = document.querySelector('.fortnite-card.is-live') || 
+                           document.querySelector('.fortnite-card:not(.is-ended)');
+
+        if (activeCard) {
+          activeCard.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+        }
+      }, 300);
     }
 
     function handleImageFallback(imgEl) {
