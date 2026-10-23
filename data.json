@@ -1,8 +1,8 @@
 {
   "nextCup": {
     "title": "Reload ZB Duos Cash Cup",
-    "date": "23.10.2026",
-    "time": "7:00 PM"
+    "date": "2026-10-23",
+    "time": "7:00 PM - 9:15 PM"
   },
   "cups": [
     {
@@ -10,7 +10,7 @@
       "date": "2026-10-19",
       "time": "7:00 PM - 10:00 PM",
       "image": "rankedcup.png",
-      "json": "rankedcup_solobrk.json",
+      "json": "rankedcup_br.json",
       "region": "EU",
       "mode": "Battle Royale",
       "teamSize": "Solo"
@@ -20,12 +20,22 @@
       "date": "2026-10-19",
       "time": "7:00 PM - 10:00 PM",
       "image": "rankedcup.png",
-      "json": "rankedcup_solozb.json",
+      "json": "rankedcup_zb.json",
       "region": "EU",
       "mode": "Zero Build",
       "teamSize": "Solo"
     },
-{
+    {
+      "title": "FNCS Solos Last Chance Qualifier",
+      "date": "2026-10-19",
+      "time": "7:00 PM - 10:00 PM",
+      "image": "fncs.png",
+      "json": "fncssoloslcq19.json",
+      "region": "EU",
+      "mode": "Battle Royale",
+      "teamSize": "Solo"
+    },
+    {
       "title": "Slender Man Mobile Cup",
       "date": "2026-10-20",
       "time": "6:00 PM - 7:15 PM",
@@ -40,7 +50,7 @@
       "date": "2026-10-20",
       "time": "7:00 PM - 9:10 PM",
       "image": "fncs.png",
-      "json": "fncssoloslcq.json",
+      "json": "fncssoloslcq20.json",
       "region": "EU",
       "mode": "Battle Royale",
       "teamSize": "Solo"
@@ -53,7 +63,7 @@
       "json": "slendermancup.json",
       "region": "EU",
       "mode": "Reload",
-      "teamSize": "Duo"
+      "teamSize": "Duos"
     },
     {
       "title": "Slender Man Cup Zero Build Reload",
@@ -63,14 +73,14 @@
       "json": "slendermancupzb.json",
       "region": "EU",
       "mode": "Reload",
-      "teamSize": "Duo"
+      "teamSize": "Duos"
     },
     {
       "title": "Solo Reload Ranked Cup (Battle Royale)",
       "date": "2026-10-20",
       "time": "7:00 PM - 10:00 PM",
       "image": "soloreloadranked.png",
-      "json": "soloreloadrankedbr.json",
+      "json": "soloreloadbr.json",
       "region": "EU",
       "mode": "Reload",
       "teamSize": "Solo"
@@ -80,40 +90,40 @@
       "date": "2026-10-20",
       "time": "7:00 PM - 10:00 PM",
       "image": "soloreloadranked.png",
-      "json": "soloreloadrankedzb.json",
+      "json": "soloreloadzb.json",
       "region": "EU",
       "mode": "Reload",
       "teamSize": "Solo"
     },
- {
+    {
       "title": "Fortnite Performance Evaluation",
       "date": "2026-10-22",
       "time": "6:00 PM - 8:00 PM",
       "image": "performance.png",
-      "json": "performance22_1.json",
+      "json": "performance1.json",
       "region": "EU",
       "mode": "Battle Royale",
-      "teamSize": "Trio"
+      "teamSize": "Trios"
     },
     {
       "title": "Fortnite Performance Evaluation",
       "date": "2026-10-22",
       "time": "9:00 PM - 11:00 PM",
       "image": "performance.png",
-      "json": "performance22_2.json",
+      "json": "performance2.json",
       "region": "EU",
       "mode": "Battle Royale",
-      "teamSize": "Trio"
+      "teamSize": "Trios"
     },
     {
       "title": "Reload ZB Duos Cash Cup",
       "date": "2026-10-23",
       "time": "7:00 PM - 9:15 PM",
-      "image": "reloadzbduo.png",
+      "image": "reloadzbduos.png",
       "json": "reloadzbduos.json",
       "region": "EU",
       "mode": "Reload",
-      "teamSize": "Duo"
+      "teamSize": "Duos"
     },
     {
       "title": "Solo Reload Victory Cup",
@@ -144,7 +154,86 @@
       "region": "EU",
       "mode": "Reload",
       "teamSize": "Solo"
+    },
+    {
+      "title": "Ranked Cup (Duo) – Battle Royale",
+      "date": "2026-10-24",
+      "time": "7:00 PM - 10:00 PM",
+      "image": "rankedcup.png",
+      "json": "rankedcup_duo_br.json",
+      "region": "EU",
+      "mode": "Battle Royale",
+      "teamSize": "Duo"
+    },
+    {
+      "title": "Ranked Cup (Duo) – Null Bauen",
+      "date": "2026-10-24",
+      "time": "7:00 PM - 10:00 PM",
+      "image": "rankedcup.png",
+      "json": "rankedcup_duo_zb.json",
+      "region": "EU",
+      "mode": "Null Bauen",
+      "teamSize": "Duo"
+    },
+    {
+      "title": "Fortnite Mobile Series LAN",
+      "date": "2026-10-25",
+      "time": "12:00 AM - 10:59 PM",
+      "image": "mobileserieslan.png",
+      "json": "mobilelan25.json",
+      "region": "EU",
+      "mode": "Reload",
+      "teamSize": "Solo"
+    },
+    {
+      "title": "Arena Test Cup",
+      "date": "2026-10-25",
+      "time": "7:00 PM - 9:00 PM",
+      "image": "arenatest.png",
+      "json": "arenatestcup.json",
+      "region": "EU",
+      "mode": "Arenen",
+      "teamSize": "Solo"
+    },
+    {
+      "title": "Reload Ranked Cup (Duo) – Battle Royale",
+      "date": "2026-10-25",
+      "time": "7:00 PM - 10:00 PM",
+      "image": "reloadranked.png",
+      "json": "reloadranked_duo_br.json",
+      "region": "EU",
+      "mode": "Reload",
+      "teamSize": "Duo"
+    },
+    {
+      "title": "Reload Ranked Cup (Duo) – Null Bauen",
+      "date": "2026-10-25",
+      "time": "7:00 PM - 10:00 PM",
+      "image": "reloadranked.png",
+      "json": "reloadranked_duo_zb.json",
+      "region": "EU",
+      "mode": "Reload",
+      "teamSize": "Duo"
+    },
+    {
+      "title": "FNCS Solos – Finale",
+      "date": "2026-10-26",
+      "time": "7:00 PM - 9:40 PM",
+      "image": "fncs.png",
+      "json": "fncssolosfinale26.json",
+      "region": "EU",
+      "mode": "Battle Royale",
+      "teamSize": "Solo"
+    },
+    {
+      "title": "FNCS Solos – Finale",
+      "date": "2026-10-27",
+      "time": "7:00 PM - 9:40 PM",
+      "image": "fncs.png",
+      "json": "fncssolosfinale27.json",
+      "region": "EU",
+      "mode": "Battle Royale",
+      "teamSize": "Solo"
     }
-   
   ]
 }
