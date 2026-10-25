@@ -216,6 +216,26 @@
       "teamSize": "Duo"
     },
     {
+      "title": "Inoxtag Icon Cup Battle Royale",
+      "date": "2026-10-25",
+      "time": "7:00 PM - 10:00 PM",
+      "image": "inoxtagcup.png",
+      "json": "inoxtag_br.json",
+      "region": "EU",
+      "mode": "Battle Royale",
+      "teamSize": "Duo"
+    },
+    {
+      "title": "Inoxtag Icon Cup Null Bauen",
+      "date": "2026-10-25",
+      "time": "7:00 PM - 10:00 PM",
+      "image": "inoxtagcup.png",
+      "json": "inoxtag_zb.json",
+      "region": "EU",
+      "mode": "Null Bauen",
+      "teamSize": "Duo"
+    },
+    {
       "title": "FNCS Solos – Finale",
       "date": "2026-10-26",
       "time": "7:00 PM - 9:40 PM",
@@ -233,6 +253,106 @@
       "json": "fncssolosfinale27.json",
       "region": "EU",
       "mode": "Battle Royale",
+      "teamSize": "Solo"
+    },
+    {
+      "title": "Arena Test Cup",
+      "date": "2026-11-02",
+      "time": "7:00 PM - 9:00 PM",
+      "image": "arenatest.png",
+      "json": "arenatestcup_nov2.json",
+      "region": "EU",
+      "mode": "Arenen",
+      "teamSize": "Duo"
+    },
+    {
+      "title": "FNCS Reload Solos – Qualifikationsrunde",
+      "date": "2026-11-03",
+      "time": "7:00 PM - 9:30 PM",
+      "image": "fncs.png",
+      "json": "fncsreloadsolos_q1.json",
+      "region": "EU",
+      "mode": "Reload",
+      "teamSize": "Solo"
+    },
+    {
+      "title": "FNCS Reload Solos – Qualifikationsrunde",
+      "date": "2026-11-04",
+      "time": "7:00 PM - 9:30 PM",
+      "image": "fncs.png",
+      "json": "fncsreloadsolos_q2.json",
+      "region": "EU",
+      "mode": "Reload",
+      "teamSize": "Solo"
+    },
+    {
+      "title": "FNCS Reload Solos – Qualifikationsrunde",
+      "date": "2026-11-07",
+      "time": "7:00 PM - 9:30 PM",
+      "image": "fncs.png",
+      "json": "fncsreloadsolos_q3.json",
+      "region": "EU",
+      "mode": "Reload",
+      "teamSize": "Solo"
+    },
+    {
+      "title": "FNCS Reload Solos – Qualifikationsrunde",
+      "date": "2026-11-08",
+      "time": "7:00 PM - 9:30 PM",
+      "image": "fncs.png",
+      "json": "fncsreloadsolos_q4.json",
+      "region": "EU",
+      "mode": "Reload",
+      "teamSize": "Solo"
+    },
+    {
+      "title": "FNCS Reload Solos – Runden",
+      "date": "2026-11-14",
+      "time": "7:00 PM - 10:00 PM",
+      "image": "fncs.png",
+      "json": "fncsreloadsolos_r1.json",
+      "region": "EU",
+      "mode": "Reload",
+      "teamSize": "Solo"
+    },
+    {
+      "title": "FNCS Reload Solos – Runden",
+      "date": "2026-11-15",
+      "time": "7:00 PM - 10:00 PM",
+      "image": "fncs.png",
+      "json": "fncsreloadsolos_r2.json",
+      "region": "EU",
+      "mode": "Reload",
+      "teamSize": "Solo"
+    },
+    {
+      "title": "FNCS Reload Solos Last Chance Qualifier",
+      "date": "2026-11-16",
+      "time": "7:00 PM - 9:30 PM",
+      "image": "fncs.png",
+      "json": "fncsreloadsolos_lcq1.json",
+      "region": "EU",
+      "mode": "Reload",
+      "teamSize": "Solo"
+    },
+    {
+      "title": "FNCS Reload Solos Last Chance Qualifier",
+      "date": "2026-11-17",
+      "time": "7:00 PM - 9:00 PM",
+      "image": "fncs.png",
+      "json": "fncsreloadsolos_lcq2.json",
+      "region": "EU",
+      "mode": "Reload",
+      "teamSize": "Solo"
+    },
+    {
+      "title": "FNCS Reload Solos – Finale",
+      "date": "2026-11-21",
+      "time": "7:00 PM - 10:45 PM",
+      "image": "fncs.png",
+      "json": "fncsreloadsolos_finale.json",
+      "region": "EU",
+      "mode": "Reload",
       "teamSize": "Solo"
     }
   ]
